@@ -6,8 +6,12 @@ Given /the following movies exist/ do |movies_table|
     # you should arrange to add that movie to the database here.
   Movie.create!(movie)
   end
+  assert false, "Unimplemented"
   #flunk "Unimplemented"
 end
+
+Given /^I am on the RottenPotatoes home page$/ do 
+visit ('/movies')
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
