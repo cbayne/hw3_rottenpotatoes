@@ -19,13 +19,14 @@ Background: movies have been added to database
   | Raiders of the Lost Ark | PG     | 12-Jun-1981  |
   | Chicken Run             | G      | 21-Jun-2000  |
 
-  And  I am on the RottenPotatoes home page
+   
+  And I am on the RottenPotatoes home page
   
 Scenario: restrict to movies with 'PG' or 'R' ratings
   # enter step(s) to check the 'PG' and 'R' checkboxes
-  When I check the following ratings: PG R
+  Given I check the following ratings: PG, R
   # enter step(s) to uncheck all other checkboxes
-  And I uncheck the following ratings: PG-13 G NC-17
+  When I uncheck the following ratings: PG-13, G, NC-17
   # enter step to "submit" the search form on the homepage
   And I submit the search form
   # enter step(s) to ensure that PG and R movies are visible
@@ -38,4 +39,7 @@ Scenario: no ratings selected
 
 Scenario: all ratings selected
   # see assignment
-  
+  When I check the following ratings: PG, R, PG-13, G, NC-17
+  And I submit the search form
+  Then I should see all of the movies
+
