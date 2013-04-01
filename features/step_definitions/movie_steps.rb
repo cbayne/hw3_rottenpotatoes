@@ -16,7 +16,8 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
 #  ensure that that e1 occurs before e2.
 #  page.content  is the entire content of the page as a string.
-        assert false, "Unimplmemented"
+        #assert false, "Unimplmemented"
+    assert page.body =~ /#{e1}.*#{e2}/m  
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -63,15 +64,7 @@ Then /^I should see all of the movies$/ do
   assert page.has_css?("table tbody tr", count: 10)
 end
 
-# Make sure that one string (regexp) occurs before or after another one
-#   on the same page
 
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  #  ensure that that e1 occurs before e2.
-  #  page.content  is the entire content of the page as a string.
-#assert page.body =~ /#{e1}.*{e2}/m
-  assert false, "Unimplemented"
-end
 
 
 
